@@ -5,4 +5,5 @@ export type RAGPaperType = {
   focus: string[];
   description: string;
   usedFor: string[];
+  pdfUrl: string;
 };

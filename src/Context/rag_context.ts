@@ -13,6 +13,7 @@ const RAG_PAPERS: RAGPaperType[] = [
       "Misalignment Detection",
       "Mechanical Health Estimation",
     ],
+    pdfUrl: "/documents/pdf1.pdf"
   },
 
   {
@@ -28,6 +29,7 @@ const RAG_PAPERS: RAGPaperType[] = [
       "Rule-Based AI Reasoning",
       "Electrical Fault Classification",
     ],
+    pdfUrl: "/documents/pdf2.pdf"
   },
 
   {
@@ -43,6 +45,7 @@ const RAG_PAPERS: RAGPaperType[] = [
       "System-Level Fault Modeling",
       "Industrial Benchmarking",
     ],
+    pdfUrl: "/documents/pdf3.pdf"
   },
 ];
 

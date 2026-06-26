@@ -1,26 +1,38 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic"; // 1. Imported dynamic helper
 import DashboardDivider from "@/components/Dashboard/divider";
-import PDFViewer from "@/components/Reports/PDFViewer";
 import RAG_PAPERS from "@/Context/rag_context";
 import { FileText, ArrowRight } from "lucide-react";
+
+const PDFViewer = dynamic(() => import("@/components/Reports/PDFViewer"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-150 w-full items-center justify-center rounded-xl border border-neutral-800 bg-neutral-900">
+      <div className="flex items-center gap-2 text-xs text-neutral-500 animate-pulse">
+        <span>Initializing Document Engine...</span>
+      </div>
+    </div>
+  ),
+});
 
 const Reports = () => {
     const [activePaper, setActivePaper] = useState(RAG_PAPERS[0]);
 
     return (
-        <div className="min-h-screen bg-gray-700 p-6 font-mono transition-colors dark:bg-neutral-950">
+        <div className="min-h-screen bg-gray-700 p-6 font-mono transition-colors">
             <DashboardDivider title="Reports" />
 
             <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-start">
 
                 <div className="w-full space-y-4 lg:w-1/3">
-                    <p className="text-xs tracking-wider text-neutral-400 uppercase">
+                    <p className="text-xs tracking-wider text-neutral-500 uppercase">
                         Select Document ({RAG_PAPERS.length})
                     </p>
 
-                    <div className="space-y-2 max-h-50 overflow-y-auto scrollbar-none bg-gray-800 rounded-3xl p-4">
+                    {/* Fixed from max-h-50 to a responsive dynamic window calculation */}
+                    <div className="space-y-2 max-h-60 overflow-y-auto scrollbar-none bg-neutral-900/40 border border-neutral-900 rounded-2xl p-3 custom-scrollbar">
                         {RAG_PAPERS.map((paper) => {
                             const isSelected = activePaper.id === paper.id;
 
@@ -30,7 +42,7 @@ const Reports = () => {
                                     onClick={() => setActivePaper(paper)}
                                     className={`w-full text-left p-4 rounded-xl border transition-all duration-200 flex items-center justify-between gap-4 group ${isSelected
                                         ? "bg-neutral-800 border-neutral-700 text-white"
-                                        : "bg-neutral-900/50 border-neutral-800 text-neutral-400 hover:border-neutral-700 hover:text-neutral-200"
+                                        : "bg-neutral-900/50 border-neutral-900 text-neutral-400 hover:border-neutral-800 hover:text-neutral-200"
                                         }`}
                                 >
                                     <div className="flex items-center gap-3">
@@ -74,11 +86,11 @@ const Reports = () => {
                         ))}
                     </div>
 
-                    <div className="space-y-1.5 mt-3 pt-3 border-t border-neutral-800 bg-neutral-900/60 rounded-2xl p-6">
-                        <p className="text-[10px] tracking-widest uppercase text-neutral-500 font-bold">
+                    <div className="space-y-1.5 mt-3 pt-3 border-t border-neutral-800 bg-neutral-900/60 rounded-2xl p-4">
+                        <p className="text-[10px] tracking-widest uppercase text-neutral-500 font-bold mb-1">
                             Applications
                         </p>
-                        <div className="flex flex-col gap-1">
+                        <div className="flex flex-col gap-1.5">
                             {activePaper.usedFor.map((item, index) => (
                                 <div key={index} className="flex items-center gap-2 text-xs text-neutral-400 font-sans">
                                     <span className="h-1 w-1 rounded-full bg-emerald-500 shrink-0" />

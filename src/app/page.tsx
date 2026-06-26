@@ -3,6 +3,7 @@
 import useCurrentMenu, { MENU } from "@/Context/sidebar_context";
 import Dashboard from "@/Pages/Dashboard";
 import Reports from "@/Pages/Reports";
+import Settings from "@/Pages/Settings";
 
 function getCurrentView(currentMenu: string) {
   switch (currentMenu) {
@@ -10,6 +11,8 @@ function getCurrentView(currentMenu: string) {
       return <Dashboard />;
     case MENU.REPORTS:
       return <Reports />;
+    case MENU.SETTINGS:
+      return <Settings />
     default:
       return <div>Select a menu item</div>;
   }

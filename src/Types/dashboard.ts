@@ -26,7 +26,6 @@ export type SysteStatusType = {
   time?: number
 }
 
-
 export interface DataPoint {
   time: string
   voltage: number
@@ -37,4 +36,17 @@ export interface DataPoint {
 export interface ElectricalChartProps {
   title?: string
   data: DataPoint[]
+}
+
+export interface LiveData {
+  voltage: number;
+  current: number;
+  powerFactor: number;
+  thd: number;
+  vibration: number;
+}
+
+export interface MotorStore {
+  raw: LiveData;
+  setRaw: (data: LiveData) => void;
 }

@@ -3,10 +3,56 @@ import DashboardDivider from "@/components/Dashboard/divider";
 import KPIWidget from "@/components/Dashboard/kpi_component";
 import MetricWidget from "@/components/Dashboard/metric_component";
 import SystemStatus from "@/components/Dashboard/system_status";
-import { KPI, METRICS, mockElectricalData, SYSTEM_STATUS } from "@/Context/dashboard_context";
-import { kpiType, MetricProps, SysteStatusType } from "@/Types/dashboard";
+import { KPI, mockElectricalData, SYSTEM_STATUS, useMotorStore } from "@/Context/dashboard_context";
+import { subscribeToMachineData } from "@/lib/firebaseUtils";
+import { kpiType, LiveData, MetricProps, SysteStatusType } from "@/Types/dashboard";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
+    const raw = useMotorStore((state) => state.raw);
+    const setRaw = useMotorStore((state) => state.setRaw);
+
+    useEffect(() => {
+        const unsubscribe = subscribeToMachineData((latestData) => {
+            setRaw(latestData);
+        });
+
+        return () => unsubscribe();
+    }, [setRaw]);
+
+    const METRICS: MetricProps[] = [
+        {
+            name: "Voltage",
+            value: `${raw.voltage}V`,
+            percentage: Math.min((raw.voltage / 300) * 100, 100),
+            variant: "success",
+        },
+        {
+            name: "Current",
+            value: `${raw.current}A`,
+            percentage: Math.min((raw.current / 10) * 100, 100),
+            variant: "success",
+        },
+        {
+            name: "Power Factor",
+            value: raw.powerFactor.toFixed(2),
+            percentage: raw.powerFactor * 100,
+            variant: "success",
+        },
+        {
+            name: "THD",
+            value: `${raw.thd}%`,
+            percentage: Math.min((raw.thd / 20) * 100, 100),
+            variant: "info",
+        },
+        {
+            name: "Vibration",
+            value: `${raw.vibration} mm/s`,
+            percentage: Math.min((raw.vibration / 5) * 100, 100),
+            variant: "warning",
+        },
+    ];
+
     return (
         <div className="min-h-screen bg-gray-700 p-6 font-mono">
             <div className="max-w-7xl space-y-8">

@@ -1,4 +1,5 @@
-import { kpiType, MetricProps, SysteStatusType } from "@/Types/dashboard";
+import { kpiType, MetricProps, MotorStore, SysteStatusType } from "@/Types/dashboard";
+import { create } from "zustand";
 
 const KPI: kpiType[] = [
   {
@@ -38,38 +39,17 @@ const KPI: kpiType[] = [
   }
 ];
 
-const METRICS: MetricProps[] = [
-  {
-    name: "Voltage",
-    value: "228V",
-    percentage: 76,
-    variant: "success"
+export const useMotorStore = create<MotorStore>((set) => ({
+  raw: {
+    voltage: 0,
+    current: 0,
+    powerFactor: 0,
+    thd: 0,
+    vibration: 0,
   },
-  {
-    name: "Current",
-    value: "4.6A",
-    percentage: 55,
-    variant: "success"
-  },
-  {
-    name: "Power Factor",
-    value: "0.97",
-    percentage: 97,
-    variant: "success"
-  },
-  {
-    name: "THD",
-    value: "2.8%",
-    percentage: 28,
-    variant: "info"
-  },
-  {
-    name: "Vibration",
-    value: "2.1 mm/s",
-    percentage: 68,
-    variant: "warning"
-  }
-];
+
+  setRaw: (data) => set({ raw: data }),
+}));
 
 const SYSTEM_STATUS: SysteStatusType[] = [
   { name: "ESP32", connect: true },
@@ -105,4 +85,4 @@ const mockElectricalData = [
   { time: "38s", voltage: 13.0, current: 2.8 },
 ]
 
-export { KPI, METRICS, SYSTEM_STATUS, mockElectricalData}
+export { KPI,SYSTEM_STATUS, mockElectricalData }

@@ -27,14 +27,6 @@ const SideBarList: SideBarItem[] = [
         icon: Brain,
     },
     {
-        name: MENU.ANALYTICS,
-        icon: ChartColumn,
-    },
-    {
-        name: MENU.MAINTENANCE,
-        icon: Wrench,
-    },
-    {
         name: MENU.REPORTS,
         icon: FileText,
     },

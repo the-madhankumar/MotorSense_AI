@@ -4,8 +4,6 @@ export const MENU = {
   DASHBOARD: "Dashboard",
   LIVE_MONITORING: "Live Monitoring",
   AI_PREDICTION: "AI Prediction",
-  ANALYTICS: "Analytics",
-  MAINTENANCE: "Maintenance",
   REPORTS: "Reports",
   ALERT: "Alert",
   SETTINGS: "Settings",

@@ -1,7 +1,9 @@
 "use client";
 
 import useCurrentMenu, { MENU } from "@/Context/sidebar_context";
+import Alerts from "@/Pages/Alert";
 import Dashboard from "@/Pages/Dashboard";
+import LiveMonitoring from "@/Pages/Live";
 import Reports from "@/Pages/Reports";
 import Settings from "@/Pages/Settings";
 
@@ -13,6 +15,10 @@ function getCurrentView(currentMenu: string) {
       return <Reports />;
     case MENU.SETTINGS:
       return <Settings />
+    case MENU.ALERT:
+      return <Alerts/>
+    case MENU.LIVE_MONITORING:
+      return <LiveMonitoring />
     default:
       return <div>Select a menu item</div>;
   }

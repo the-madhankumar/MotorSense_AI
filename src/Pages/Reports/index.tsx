@@ -21,7 +21,7 @@ const Reports = () => {
     const [activePaper, setActivePaper] = useState(RAG_PAPERS[0]);
 
     return (
-        <div className="min-h-screen bg-gray-700 p-6 font-mono transition-colors">
+        <div className="min-h-screen bg-neutral-950 p-6 font-mono transition-colors">
             <DashboardDivider title="Reports" />
 
             <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-start">

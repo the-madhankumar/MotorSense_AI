@@ -288,7 +288,6 @@ MotorMind-AI/
 ## 👨‍💻 Author
 
 **Madhan Kumar M**
-Final Year IT Student
 Focus: AI Systems, Industrial ML, Distributed Intelligence
 
 ---

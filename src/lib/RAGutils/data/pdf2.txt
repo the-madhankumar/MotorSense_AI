@@ -1,0 +1,181 @@
+
+
+Fault Detection of Induction Motor Using Fuzzy Logic
+ Mr. Chavan Mayur D1, Mr. Swami P.S.2 Dr. Thosar A.G.3, Mr. Gharase Rajendra B.4
+
+1 PG Student, Department of Electrical Engg., Govt. College of Engg. Aurangabad (M.S.) India
+2 Assistant Prof essor in Electrical Engg. Dept., Govt. College of Engg. Aurangabad (M.S.) India
+3 Professor in Electrical Engg. Dept., Govt. College of Engg. Aurangabad (M.S.) India
+4 Assistant Prof essor in Electrical Engg. Dept., N.B.Navale sinhgad college of Engg. Solapur(M.S.) India
+
+
+Abstract:- Faults in induction motor is an common problem which continues to grow in importance due to these induction motors are widely used in industries and have a great extent usage than any other motors nearly 80 percent of the total drives used. Thus, the need of protection to limit various fault is required. Due to the continuous running nature of induction motor more advanced techniques are required to properly quantify their impact. This paper proposes the utilization of fuzzy logic to analyze, compare & diagnose health condition of induction motor under various faults.
+Key words: - Induction motor, faults, fuzzy logic,
+MATLAB/Simulink
+1. Introduction: Induction motor is the single most common electromechanical energy conversion device available for various industrial applications because of the reason is the wide variety of characteristics like robustness, self starting, high efficiency, low cost, reliability, speed control flexibility, etc. These are available at different ratings; based on the load requirement the motor is selected. Running of an industrial plant in the safe and efficient mode, electric motors specially induction motors play very important role. Hence early detection of abnormalities in the motors will help to avoid expensive failures. While discussing the faults in induction motor, various parameters such as voltage, current, temperature are considered. If any fault occur in the motor, then it is necessary to detect and diagnose the fault with the help of one of the parameter from above.
+
+The proposed work for project aims to detect various faults such as under current, overload, single phasing, two phase open by condition monitoring of induction motor taking current as the reference parameter using soft computing technique such as fuzzy logic by developing working model of system.
+
+2. FAULTS DUE TO DIFFERENT UNBALANCE CONDITIONS IN THE SUPPLY OF THREE
+PHASE INDUCTION MOTOR.
+To identify the cause of the current unbalance it is very important to have the motor inspected at the application. The motor should only be removed from the application when we are 100% sure the problem is with the motor. Current unbalance is caused, in most cases by unbalanced phase voltage. However it can also be caused by an unbalanced number of turns in the windings and an uneven air gap. Each one of these causes, will be discussed below:
+
+(i) Unbalanced phase voltages.
+
+   Voltage unbalance in the electrical system can lead to a number of problems related to utility and customer operations. From the utility perspective, unbalanced voltages may be caused by load unbalance or possibly by fuses being blown on distribution capacitors. For the customer, voltage unbalance can cause adverse effects on three phase motor loads, resulting in the necessity to derate motors under unbalanced conditions. When measuring the line to line voltage from phase R to Y, Y to B and B to R, detectable differences in the voltages would show up. Unbalanced voltage of 1% will generally produce unbalanced currents up to 5%.
+
+(ii) Overvoltage
+
+When the motor is running in an overvoltage condition, slip will decrease as it is inversely proportional to the square of the voltage and efficiency will increase slightly. The power factor will decrease because the current being drawn by the motor will decrease and temperature rise will decrease because the current has decreased . As most new motors are designed close to the saturation point
+, increasing the V/HZ ratio could cause saturation of air gap flux causing heating The overall result of an overvoltage condition is an increase in current and motor heating and a reduction in overall motor performance.
+(iii) Under voltage:
+
+If an induction motor operating at full load is subjected to an under voltage condition, full load speed and efficiency will decrease and the power factor, full load current and temperature will increase. If the voltage decreases, the current will increase, causing an overload trip. In some cases, if an under voltage condition exists it may be desirable to trip the motor faster than the overload element. The overall result of an under voltage condition is an increase in current and motor heating and a reduction in overall motor performance.
+(iv) Short Circuit
+
+The short circuit element provides protection for excessively high overcurrent faults. When a motor starts, the starting current (which is typically 6 times the Full Load Current) has asymmetrical components. These asymmetrical currents may cause one phase to see as much as 1.7 times the RMS starting current. As a result the pickup of the short circuit element must be set higher than the maximum asymmetrical starting currents seen by the phase CTs to avoid nuisance tripping. The breaker or contactor that the relay is to control under such conditions must have an interrupting capacity equal to or greater then the maximum available fault current.
+(v) 
+Single phasing
+
+The term single phasing means one of the phase is open. Open winding in motor, any open circuit in any phase anywhere between the secondary of transformer and the motor, primary fuse open are main causes behind single phasing. The effect of single phasing on three phase motor vary with service condition and motor thermal capacities. When single- phased, the motor's temperature rise is greater than the increase in current.
+To prevent the above mentioned faults due to unbalanced voltage, under voltage, over-current and single phasing, a new model for tripping induction motor using Microchip PIC 16f877 microcontroller is the subject of this paper and briefly discussed in next section.
+
+3. DEVELOPED FUZZY LOGIC SCHEME
+
+Fuzzy logic deals with uncertain, imprecise, or qualitative Decision-making problems in engineering. Fuzzy logic is used in system control and analysis design, because it shortens the time for engineering development and sometimes, in the case of highly complex systems, is the economical way to solve the problem. In this paper the motor condition is described using linguistic variables. Fuzzy subsets can be assigned to describe the stator current amplitudes by means of corresponding membership functions. A knowledge base required for faults in motor comprising base and data base can be built to activate the fuzzy inference. The result of induction motor condition made based on fuzzy inference which is capable of giving high accuracy detection model. The structure of fuzzy inference system is shown in figure 1.Also the fuzzy monitoring and diagnosis model is shown in figure 2.
+
+
+
+
+
+Figure 1. Structure of fuzzy Inference System.
+
+
+Figure 2. Fuzzy model for motor fault detection
+
+The stator current gives information related to motor fault. The fuzzy system rely on a set of rules. In the present study the motor phase currents have been monitored and based on subsequent trend in current values detection of motor status has been judged.
+
+Fuzzy Inference System for motor fault detection has been created using Fuzzy Tool Box of MATLAB. Fuzzy rules and membership functions are constructed by observing the data set. For the measurements related to the stator currents, more insight into the data is needed, so membership functions will be generated for input variable as each phase currents( Negative Large, Zero, Positive Large). Generated output variable regarding motor conditions are ( Normal, Average, Abnormal).
+Membership functions are created by observing the data set and the behavior of stator currents which are likely to cause faults in the motor. In this study trapezoidal
+
+membership functions are used. The membership functions for input and output variables are shown in figure 3 and 4 respectively.
+
+
+    Figure 3. Membership Functions of input stator Currents Ia, Ib and Ic.
+
+
+Figure 4. Membership Functions for Output Motor condition
+
+Once the form of initial membership functions has been determined, the fuzzy if-then rules can be derived. In this paper, first we investigated the good condition of the motor, after that we have investigated faults such as single phasing, over-voltage, under current, two phase open, critically loaded, no supply condition and two phase open. These if-then rules have been created so as to cover all the healthy and faulty cases. In this paper, we have obtained the following 27 if-then rules.
+1. If (R is NL) and (Y is NL) and (B is NL) then (OUT is Normal)
+2. If (R is NL) and (Y is NL) and (B is Z) then (OUT is Normal)
+3. If (R is NL) and (Y is NL) and (B is PL) then (OUT is Normal)
+4. If (R is NL) and (Y is Z) and (B is NL) then (OUT is Normal)
+5. If (R is NL) and (Y is Z) and (B is Z) then (OUT is Average)
+
+6. If (R is NL) and (Y is Z) and (B is PL) then (OUT is Average)
+7. If (R is NL) and (Y is PL) and (B is NL) then (OUT is Normal)
+8. If (R is NL) and (Y is PL) and (B is Z) then (OUT is Average)
+9. If (R is NL) and (Y is PL) and (B is PL) then (OUT is Abnormal)
+10. If (R is Z) and (Y is NL) and (B is NL) then (OUT is Normal)
+11. If (R is Z) and (Y is NL) and (B is Z) then (OUT is Average)
+12. If (R is Z) and (Y is NL) and (B is PL) then (OUT is Average)
+13. If (R is Z) and (Y is Z) and (B is NL) then (OUT is Average)
+14. If (R is Z) and (Y is Z) and (B is Z) then (OUT is Average)
+15. If (R is Z) and (Y is Z) and (B is PL) then (OUT is Average)
+16. If (R is Z) and (Y is PL) and (B is NL) then (OUT is Average)
+17. If (R is Z) and (Y is PL) and (B is Z) then (OUT is Average)
+18. If (R is Z) and (Y is PL) and (B is PL) then (OUT is Abnormal)
+19. If (R is PL) and (Y is NL) and (B is NL) then (OUT is Normal)
+20. If (R is PL) and (Y is NL) and (B is Z) then (OUT is Average)
+21. If (R is PL) and (Y is NL) and (B is PL) then (OUT is Abnormal)
+22. If (R is PL) and (Y is Z) and (B is NL) then (OUT is Average)
+23. 
+If (R is PL) and (Y is Z) and (B is Z) then (OUT is Average)
+24. If (R is PL) and (Y is Z) and (B is PL) then (OUT is Abnormal)
+25. If (R is PL) and (Y is PL) and (B is NL) then (OUT is Abnormal)
+26. If (R is PL) and (Y is PL) and (B is Z) then (OUT is Abnormal)
+27. If (R is PL) and (Y is PL) and (B is PL) then (OUT is Abnormal)
+In this paper, we have selected ranges for input and output membership functions for predicting motor condition while it is in operation. For input membership function that is in this case for each input stator current we have selected range between 0 to 255. Similarly for output membership function which is motor condition status in this case is between 0 to 20. Above mentioned rules and from selected ranges for input and output membership functions, we following rule weights for motor condition in table no.1.
+
+Table No.1 Rule base for Motor condition
+
+Motor ConditionRule WeightGood ConditionBetween 10 to 12Single PhasingBetween 3 to 5No SupplyBetween 1 to 2.7Under currentBetween 5 to 10Over voltageBetween 12 to 17Critically LoadedMore than 17Two Phase OpenLess than 1.5
+
+     By fuzzy inference structure, input conditions of stator currents are mapped with respective output motor conditions and fault detection of motor at any instant of time is derived. This is done by the process of
+
+defuzzification for calculating crisp indication of motor fault condition based on fuzzy output generated by rule weight process of fuzzy inference. There are various methods of defuzzification are available. But in this paper we have employed the centroid method for defuzzification.
+
+If any slight voltage unbalance occurs, then the output of fuzzy inference system sets the output corresponding to fault. Immediately the fault and the currents are stored in a file for analysis purpose. For serious faults such as single phasing, critically loaded or supply cut- off due to any reason, the motor should not be allowed to operate any further and motor gets isolated from the supply and stores the instantaneous data.
+
+4. HARDWARE IMPLEMENTATION
+The experimental setup for motor parameter measurement is shown in block diagram in figure no 5. The experimental setup includes three phase induction motor, the embedded circuit board which is made from PIC 16F877, power supply, relay for control purpose, display unit and current transformers for current measurement. A stator current has potential information regarding faults. The most suitable measurement for fault detection under consideration, in terms of easy accessibility, reliability and sensitivity are stator currents Ia, Ib and Ic. The ct is of 5 A/5mA specification. The power circuit operation built using filters and voltage regulators.
+The induction motor has been initially tested, in absence of faults, in order to determine the stator currents corresponding to the supposed good condition of motor. Afterward, we have encountered some unexpected situation then the motor is being stopped by means of the trip signal send by the microcontroller to the relay operated contactor.
+LCD seven segment display unit is used as an output device to display the output data, warning messages and fault conditions. The system works with any motor design with high degree of accuracy. The method is very sensitive, fast and detects faults while running and before start.
+
+
+
+Figure No. 5 Overall block diagram of system
+4.1 Implemented Algorithm:-
+We have prepared microcontroller based integrated fault detection system. First start the motor at rated condition. Monitor the stator currents Ia, Ib and Ic through current transformer. The measured currents are digitally passed to computer through serial communication via RS 232 cable where we have constructed a simulation model in MATLAB Simulink. This simulation involves fuzzy inference system. The fuzzy logic inference structure evaluates the inputs and then diagnose the motor condition. The obtained output of fuzzy inference system is transferred to PIC microcontroller. The simulation model is shown in figure no. 5. Then microcontroller will take decision regarding motor condition. If any fault occurs then microcontroller will send a signal to relay circuit which will isolate the motor from the supply and output will display on LCD.
+
+
+	
+
+
+ Figure No. 6 Implemented simulation model in MATLAB Simulink
+5. RESULT AND CONCLUSION.
+A fault detection system is developed and tested on a three phase, 440 v, 50 Hz, 0.37 KW, 1390 RPM induction motor. The result of motor condition determination is shown in this section. The different mode of operations such as good condition, single phase open, no supply, undercurrent, overvoltage, critical loaded has been tested. MATLAB fuzzy tool facilitates the insight to fuzzy inference process vide the rule viewer option on fuzzy inference system Edit menu. This greatly helps for proper designing of fuzzy sets, fuzzy rules and overall performance of fuzzy inference system in terms of output targated for all possible range of inputs.
+1. Good condition mode :-
+While simulating the induction motor, the rated voltage was applied. From this, it is observed that fuzzy inference motor condition value comes to 10.3. this indicates the motor is in Good condition and it is highlighted in figure no 7 below.
+
+Figure no 7 Rule viewer for Good condition
+2. Unbalanced input voltages :-
+The simulation of induction motor is energized with any kind of unbalance in voltage can be created by adding resistance to one phase or by simply varying the voltage magnitude and no other parameter needs to changed. The motor is start up with normal parameters. After that a fault has been created by changing the voltage by using three phase variac ranging 0 to 480 V. In this case the rated voltage was reduced first to create under-voltage condition. Which result to reduction in current and fuzzy motor condition value comes to 8.04. this indicates the motor is in under current condition and motor is isolated from the supply by relay tripping. It is shown in figure no 8.
+Similarly, if we increase the input supply voltage by using three phase variac, we can manage overvoltage condition which gives fuzzy motor condition value
+12.2. Hence the motor is disconnected from the supply by relay to prevent it from effects of overvoltage. It is shown on figure no 9.
+
+
+
+Figure no 8 Rule viewer for Under current condition
+
+Figure no 9 Rule viewer for overvoltage condition
+3. Single phasing or one phase open :-
+In this case after normal startup, R-phase was open circuited and the corresponding results obtained are shown in figure no 10. Single phasing affects overheat in the winding which causes stator winding failure. Also single phasing represents the worst case of an unbalanced voltage condition. From the above result, it is concluded that, this is of great practical use as motor can be protected from the total damage and hence the complete breakdown of motor.
+4. Critically loaded condition :-
+Induction motor was started by means of normal operating condition. After that a mechanical load was
+
+applied in such a way that motor draws a current which was more than the rated values and caused to generate heat in the motor. This was sensed by fuzzy inference system and a control signal is provided to relay circuit through microcontroller. This motor condition is shown in figure no 11 and motor is protected from the rise in heat.
+
+Figure no 10 Rule viewer for single phasing mode
+
+5. No supply condition :-
+While the induction motor was started normally and due to open winding in motor, any open circuit or due to any reason if supply is unavailable then the implemented system cut-off the motor from supply and keep it away from the damage. This result is shown in figureno.12.
+
+
+
+Figure no 11 Rule viewer for Critically loaded condition
+
+Figure no 12 Rule viewer for No supply condition
+6. References.
+
+[1] Ching-Yin Lee, Bin-Kwie Chen, Wei-Jen Lee, Yen-Feng Hsu, "Effects of Various Unbalanced Voltages on the Operation of an Induction Motor Under the Same Voltage Unbalance Factor Condition" IEEE 1997 pp 51-59.
+[2] Paul B. Cummings, Jhon R. Dunki-Jacobs, Robert H. Kerr, "Protection of Induction Motor Against Unbalanced Voltage Operation" IEEE Transactions on Industry Applications, Vol. IA-21, No. 4 May/June 1985 pp 778-792.
+[3] Makbul Anwari & Ayong Hiendro, " New Unbalance Factor for Estimating Performance of a Induction Motor with Under & over voltage Unbalance" IEEE Transactions on Energy Conversion, Vol. 25, No. 3 2010 pp 619-65 .
+[4] 
+Pinjia Zhang, Yi Du, Thomas G.Habetler & Bin Lu, " A Servey of Condition Monitoring & Protection Methods for Medium-Voltage Induction Motor" IEEE Transactions on Industry Applications, Vol.47,No.1,2011 pp 34-46 .
+[5] Mrs. M Sudha, Dr. P. Anbalagan, " A Novel Protecting Method for Induction Motor Against Faults Due to Voltage Unbalanced And Single Phasing," The 33rd annual conference of the IEEE Transactions on Industrial Electronics society (IE CON), Nov 5-8 2007 pp 1144-1148.
+[6] K.Vinoth kumar, Dr. S.suresh kumar Badugu praveena, Josef p.john, Jubin Eldho Paul," Soft Computing Based Fault Diagnoses," IEEE second international conference on computing, communication & networking technologies,2010.
+[7] Mohamed EI Hachemi Benbouzid, "A Review of Induction Motor Signature Analysis As A Medium for Fault Detection" IEEE Transactions on Industrial Electronics, Vol.47,No. , October 2000 pp 984-993.
+[8] Ramazan Bayindir, Ibrahim Sefa, Ilhami, Askin Betkas, " Fault Detection And Protection of Induction Motors Using Sensors" IEEE Transactions on Energy Conversion, Vol.23,No. 3, September 2008 pp 734-741.
+[9] Mini V.P., Dr.S. Ushakumari, " Incipient Fault Detection And Diagnosis of Induction Motor Using Fuzzy Logic" IEEE 2011 pp 675-681.
+[10] Mohamed Ei Hachemi Benbpuzid, Michell Vieira, Celine Theys, " Induction Motor Fault Detection And Localization Using Stator Current Advanced Signal Processing Techniques" IEEE Transactions on Power Electronics, Vol. 14, No. 1, January 1999 pp 14-22.
+[11] R. Saravankumar, K. Vinoth Kumar, Dr. K. K. Ray, " Fuzzy Logic BasedFault Detection in Induction Machines Using LabView" IJCSNS International Journal of Computer Science And Network Security, Vol.9, No. 9, September 2009.
+[12] M. Zeraoulia, A. Mamoune, H. Mangel, M.E.H. Benbouzid," A Simple Fuzzy Logic Approach for Induction Motors Stator Condition Monitoring" Journal of Electrical Systems, 2005 pp 15-25.
+[13] Milind S. Patil, Amir M. Shaikh, Ravindra R. Mudholkar, " Motor Health Detection Using Fuzzy Logic" International Journal of Engineering Research and Development, Vol. 3, Issue 9, September 2012 pp 73-83
+[14] Fuzzy Logic Toolbox(tm) User's Guide R2012a.
+[15] MATLAB -R2010a.
+
+
+
+

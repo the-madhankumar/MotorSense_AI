@@ -1,0 +1,199 @@
+A Review of Fault Diagnostic and Monitoring Schemes of Induction Motors
+Amandeep Sharma1, S. Chatterji2, Lini Mathew3, Mohammad Junaid Khan4
+*Electrical Engineering Department, NITTTR, Chandigarh, India
+
+Abstract-Working as the backbone of modern industry, induction machines play a vital role in areas such as manufacturing, transportation, etc. But like any other piece of equipment, they are vulnerable to faults, which if left unmonitored, might lead to catastrophic failure of the machine in the long run. On-line condition monitoring of the induction motors has been widely used in the detection of faults. This paper inspects into the various faults and review of traditional and ingenious techniques for induction motor faults with a recognition of future research areas.
+
+I. INTRODUCTION
+
+Induction motors are considered as foundation for every industry. However they will eventually fail like any other machine because of heavy duty cycles, poor working environment, installation and manufacturing factors, etc. There failure might cause immense amount of loss to owner and clients as well. Consequently, fault diagnosis system is very important for safe operation and preventing rescue. Induction machine failures include mechanical and insulation faults. However, many methods have been proposed for fault detection and diagnosis, but most of the methods require a good deal of expertise to apply them successfully. The induction motor is subjected to major faults and related secondary faults. Various types of faults are categorized into different classifications, as shown in Fig. 1. Mainly, an induction motor may have internal fault or external fault. On the basis of origin, a fault may be classified into mechanical or electrical fault. Depending on the location, fault may be a rotor fault or a stator fault. The faults associated with the moving parts like bearing and cooling are classified as rotor faults, while those associated with the stator are known as stator faults [1]. Specifically, induction motor faults can be broadly categorized into bearing failures, stator faults, rotor faults, air gap eccentricity, mechanical vibrations, etc. Fig. 2 illustrates the relative probability of occurrences of various faults in an induction machine [2].
+
+(a)
+
+
+
+
+
+
+(a) Sources of Machine Faults
+
+
+
+
+
+
+
+
+
+(b)
+
+(b) Classification of Internal Faults
+
+(c)
+
+(c) Classification of External Faults
+
+Fig. 1 Broad classification of Different Faults in Induction Motors (a) Sources of Machine Faults, (b) Classification of Internal Faults, (c) Classification of External Faults
+
+A fault diagnosis system [3] has been shown in Fig. 3 which consists of a sensor assembly that provides the fault signal to a signal processing unit, which further sends its result to be analyzed by expert systems, where the corresponding fault is ultimately detected.
+
+
+
+
+Fig.2. probability of occurrence of various faults [2]
+Fig.3. Block diagram representation of On-Line fault monitoring
+Condition monitoring and fault diagnostics are practically implemented by the inspection of corresponding anomalies in machine current, voltage and leakage flux. Other methods [4-5] including monitoring the core temperature, bearing vibration level and pyrolyzed products, have been reported to diagnose fault conditions such as insulation defects [6], partial discharge [7] and lubrication oil and bearing degradation [8].
+Numerous induction motor fault detection techniques are based on Fast Fourier Transform spectral signature analysis [9-11], vibration analysis [12-13], temperature measurements [14-16], harmonic analysis of speed fluctuations [17-19], state or parameters estimation [20-22], either axial flux or air gap torque analysis [23-25], acoustic noise arrangement [26-27], magnetic field analysis [28-30], fuzzy logic and neural networks [31-33], etc.
+
+II. INDUCTION MOTOR FAULTS
+
+Attentive efforts have been devoted to induction motor fault analysis. Depending on the occurrence of region of fault, induction motor faults are generally put under the following five categories.
+
+A. Bearing Faults
+Mainly, a rolling-element bearing is an arrangement of two concentric rings. It is a set of balls or rollers spin in raceways between the inner ring and outer ring. Bearing defects [34] may be divided as "distributed" or "local". Distributed defects consists misaligned races, waviness, surface roughness and off-size rolling elements. Local defects consists spalls, pits and cracks on the rolling surfaces. These local defects generates a series of impact vibrations at the time when a running roller passes over the surface of a defect whose period and amplitude are calculated by the anomaly's position, speed and bearing dimension. Mechanical vibrations are produced by the flawed bearings. These vibrations are at the rotational speed of every component. The bearing dimensions and the rotational speed of the machine are used to determine the characteristic frequencies associated to the raceways and the balls or rollers. The condition of the bearing is ascertained by examining these frequencies. This task is accomplished using mechanical vibration analysis techniques.
+
+B. Stator Faults
+An induction motor has various stresses like thermal, electrical, mechanical, and environmental [35-37]. Most stator faults can be attributed to such stressful operating conditions. Faults in the stator winding such as inter-turn, inter-coil, open circuit, phase- to-phase and coil-to-ground [38], are some of the more severe and potentially destructive faults. If these faults are left undetected, they may eventually cause cataclysmic failure of the motor.
+
+C. Rotor Faults
+
+Rotor faults [40] arises due to electrical failures such as a bar defect or bar breakage or mechanical failures such as rotor eccentricity. Bar defect fault occurs due to thermal stresses, hotspots, or fatigue stresses during transient operating conditions such as start-up, especially in large motors. A broken bar changes the torque significantly and became dangerous to the safety and consistent operation of the machines [41]. The second type of rotor fault is caused by air gap eccentricity. This fault is a common effect related to a range of mechanical problems in induction motors such as load unbalance or shaft misalignment. Long-term load unbalance can damage the bearings and the bearing housing and influence air gap symmetry. Shaft misalignment means horizontal, vertical or radial misalignment between a shaft and its coupled load. With shaft misalignment, the rotor will be displaced from its normal position because of a constant radial force.
+
+D. Eccentricity Faults
+Unequal air gap between stator and rotor results in eccentricity [42] of induction motor. In general, air-gap eccentricity can be of two types: the static air-gap eccentricity and the dynamic air-gap eccentricity. A mixture of both forms, called mixed eccentricity [43] and the axial non uniformity of air gap, known as inclined eccentricity [44] have also been accounted. The minimal radial air-gap length is fixed in space for static air-gap eccentricity. On the contrary, the center of rotor and the center of rotation do not coincide for dynamic eccentricity. In this case, the position of minimum air gap is not fixed in space but rotates with the rotor. An erroneous positioning of the rotor or stator during the commissioning phase may give rise to static eccentricity. It may also be caused by stator core being non-circular in shape. A cause of dynamic eccentricity can be a bent shaft, bearing wear and movement, or mechanical resonances at critical speeds.
+
+III. FAULT DIAGNOSIS TECHNIQUES
+
+The spectrum of supply current of an induction motor can be analyzed for the diagnosis of faults appearing in it. For a healthy motor, there will be no existence of backward rotating field and only the forward rotating magnetic field rotates at synchronous speed. In the occurrence of any fault, there will be a resultant backward rotating field in the air gap and the spectrum of stator current will change.
+
+In Table 1 various frequency components introduced in supply current spectrum due to faults [45] has been summarized.
+
+Table 1. Frequency components of induction motor fault
+
+FaultFrequencyBearing fault
+
+
+EccentricityRotor fault
+where,
+fcbf = components generated by bearing faults, fs = supply frequency, n = 1,2,3...[Integral values], frc = characteristics race frequencies, Nb = number of bearing balls, Db = ball diameter, Dp = bearing pitch diameter, ? = contact angle of the ball on the races, fcbrf = components generated by broken rotor faults, p = number of pole-pairs, s = per-unit slip, fce = components associated with eccentricity, Ore = rotating eccentricity order, Osmh = stator MMF harmonic order, Rs = number of rotor slots.
+
+By monitoring the various frequencies in Table 1, it is possible to diagnose the corresponding motor faults. Nevertheless, it has been observed [46-47] that these frequency components cannot be treated as exact signs of occurrence of motor faults as these frequencies can be detected in the spectrum of even healthy motors due to unavoidable manufacturing symmetries and misalignment etc., Many techniques [48-49] have been proposed and developed over years that provide a good measure of occurrence of faults in induction motors.
+
+A. Vibration Spectrum Analysis
+The forces occurring in the rolling element bearing in electrical machines create high frequency components of vibration. During normal conditions, these high frequency components are mainly because of friction but in case of a defect in bearings shock pulses can also be found due to breaks in lubrication layer between the friction surfaces. This method analyses the vibration spectrum of an induction machine using piezoelectric accelerometer which works on Fast Fourier Transform to extract from a time domain signal the frequency domain representation.
+
+B. Using Park Vector Approach and Complex Wavelets
+The impact of stator fault on machine current can be examined through Park vector transformation approach. The locus of instantaneous spatial vector sum of the three phase stator currents forms the basis for Park's vector. Generally, a three phase induction motor does not involve the connection to the neutral. It only involves the connection with the three phase mains. Hence, the mains current has no homo polar current. A two dimensional representation of three phase current of induction motor can be achieved using Park's Transform. As a function of mains phase variable (IA, IB, IC), the Park's vector components (Id, Iq) are:
+
+Under ideal conditions, three-phase currents lead to a Park's vector with the following components:
+
+
+Where, Im is the supply phase current maximum value and ?s is the supply frequency. This maps a circle which has its centre at the origin (0, 0) of the coordinates. This is a very simple reference figure that allows the detection of faulty conditions by monitoring the deviations of the acquired patterns. This locus is distorted by stator winding faults and thus provides easy fault diagnosis. The healthy pattern differs slightly from the expected circular one, because supply voltage is generally not exactly sinusoidal.
+Besides making analysis and calculations easier, Park's Transform scores over traditional methods in terms of being economical, especially for small and medium-sized motors. Also it can diagnose the faults without requiring access to motor.
+
+C. Motor Current Signature Analysis (MCSA)
+Current harmonics in the stator current are analyzed by MCSA [53-59]. These harmonics are caused by new rotating flux components on account of a fault. It needs only one current sensor and is based on signal processing techniques like FFT [60]. The generalized equipment set up for measuring motor current is shown in Fig. 4. Data acquisition is achieved by performing FFT on the stator current. The data obtained after FFT is normalized as a function of the first harmonic amplitude is then analyzed.
+
+Three-phase supply
+Fig.4 Set-Up for Measuring Motor Current
+
+D. Intelligent Techniques
+Several Intelligent techniques like Fuzzy logic systems [61-63], Artificial Neural Networks [64-66], Neuro-Fuzzy Systems [67- 69] etc. have been elaborately discussed for induction motor condition monitoring. Usually, any Artificial Intelligence (AI)
+
+based diagnostic technique has three prime steps- i) Signature extraction ii) Fault detection and iii) Fault severity estimation. Neural Networks for condition monitoring of an induction motor is presented in [70].
+Apart from these techniques, some other methods for the incipient fault detection of induction motor have found a mention in other literature [71-75]. Table 2 presents an elaborate comparison of several fault detection techniques and the faults generally detected by them.
+Table 2. Comparison of various fault detection techniques
+
+Motor FaultsDetection TechniquesBearing and Vibration
+FaultsVibration Testing and
+AnalysisBearing, Rotor, Stator and
+Vibration FaultsMCSABearing and Stator FaultsPark's TransformBearing, Rotor, Stator and
+Vibration FaultsWavelet AnalysisBearing and Rotor FaultsArtificial Neural
+Networks
+IV. CONCLUSION
+This paper attempts to summarize recent developments in induction motor fault diagnostics and prognostics. It attempted to review fundamentals, main results, and practical applications of the MCSA used for induction motors faults detection. Various techniques, models and algorithms have been analyzed and the suitability of a particular technique for a specific fault diagnosis has been focused upon in this paper.
+Expert systems can be employed for fault diagnosis using rules obtained from the connection weight of a supervised neural network and rules extracted from heuristic knowledge. This combination of Artificial Neural Networks and expert knowledge may enhance the monitoring system for diagnosis.
+REFERENCES
+[1] G.K. Singh and Sa'ad Ahmed Saleh Al Kazzaz, "Induction Machine Drive Condition Monitoring and Diagnostic Research-A Survey", Electric Power Systems Research, vol. 64, pp. 145-158, 2003.
+[2] M. L. Sin, W.L. Soong and N. Ertugrul, "Induction Machine On-Line Condition Monitoring and Fault Diagnosis - A Survey", AUPEC2003, Australasian Universities Power Engineering Conference, Christchurch, New Zealand, pp. 1-6, 2003.
+[3] Neelam Mehala and Ratna Dahiya "Condition Monitoring and Fault Diagnosis of Induction Motor Using Motor Current Signature Analysis", A Ph.D Thesis submitted to the Electrical Engineering Department, National Institute of Technology, Kurushetra, India, October, 2010.
+[4] P. J. Tavner and J. Penman, "Condition Monitoring of Electrical Machines", Letchworth, England: Research Studies Press Ltd., 1987.
+[5] Shuo Chen, "Induction Machine Broken Rotor Bar Diagnostics Using Prony Analysis", A Ph.D Thesis submitted to the School of Electrical and Electronic Engineering of the University of Adelaide, April 2008.
+[6] Olav Vaag Thorsen and Magnus Dalva, "A survey of Faults on Induction Motors in Offshore Oil Industry, Petrochemical Industry, Gas terminals, and Oil Refineries", IEEE Transactions on Industry Applications, vol. 31, no. 5, September/October 1995.
+[7] William Torbat Thomson and Mark Fenger, "Industrial Application of Current Signature Analysis to diagnose Faults in 3-Phase Squirrel Cage Induction Motors", Pulp and Paper Industry Technical Conference, Conference Record of 2000 Annual, pp. 205-211, 19-23 June, 2000.
+[8] Andrew M. Knight and Sergio P. Bertani, "Mechanical Fault Detection in a Medium-Sized Induction Motor Using Stator Current Monitoring", IEEE Transactions on Energy Conversion, vol. 20, no.4, pp. 753-760.
+[9] Neelam Mehala and Ratna Dahiya, "Condition Monitoring Methods, Failure Identification and Analysis for Induction Machines", International Journal of Circuits, Systems and Signal Processing, vol. 3, no. 1, pp. 29-35, 2009.
+[10] Mohamed El Hachemi Benbouzid, "A Review of Induction Motors Signature Analysis as a Medium for Faults Detection", IEEE Transactions on Industrial Electronics, vol.47, no.5, pp. 984-993, October 2000.
+[11] Castelli Marcelo, Juan Pablo Fossatti and Jose Ignacio Terra, "Fault Diagnosis of Induction Motors Based on FFT", Fourier Transform - Signal Processing, ISBN: 978-953-51- 0453-7, InTech, 2012.
+[12] Mounir Djeddi, Pierre Granjon and Benoit Leprettre, "Bearing Fault Diagnosis in Induction Machine Based on Current Analysis Using High- Resolution Technique", Power Electronics and Drives, 2007. SDEMPED 2007. IEEE International Symposium on Diagnostics for Electric Machines, 2007, pp. 23-28, 2012.
+[13] Van Tuan Do and Ui-Pil Chong, "Signal Model-Based Fault Detection and Diagnosis for Induction Motors Using Features of Vibration Signal in Two- Dimension Domain", Strojniskivestnik - Journal of Mechanical Engineering, vol. 57, no. 9, pp. 655-666, 2011.
+[14] Aderiano M. da Silva, "Induction Motor Fault Diagnostic and Monitoring Methods", A Thesis submitted to the Faculty of the Graduate School, Marquette University, Milwaukee, Wisconsin, May 2006.
+[15] Jordi Cusidói Roura and Jose Luis Romeral Martínez (2011), "Transient Analysis and Motor Fault Detection using the Wavelet Transform", Discrete Wavelet Transforms - Theory and Applications, Dr. Juuso T. Olkkonen (Ed.), ISBN: 978-953-307-185-5, InTech.
+[16] El Houssin El Bouchikhi, Vincent Choqueuse, Mohamed Benbouzid and Jean Fred´ eric Charpentier, "Induction Machine Bearing Failures Detection Using Stator Current Frequency Spectral Subtraction", 2012 IEEE International Symposium on Industrial Electronics (ISIE),
+
+10.1109/ISIE.2012.6237265, pp. 1228-1233, 2012 .
+[17] B. G. Gaydon, "An instrument to detect induction motor rotor circuit defects by speed fluctuation measurements," in Proc. Electric Test Measuring Instrumentation-Testmex Conf. Paper, pp. 5-8, 1979.
+[18] J. R. Stack, T. G. Habetler and R. G. Harley, "Effects of machine speed on the development and detection of rolling element bearing faults," IEEE Power Electron. Lett., vol. 1, no. 1, pp. 19-21, Mar. 2003.J. R. Stack, T. G. Habetler and R. G. Harley, "Effects of machine speed on the development and detection of rolling element bearing faults," IEEE Power Electron. Lett., vol. 1, no. 1, pp. 19-21, Mar. 2003.
+[19] C. J. Diste and R. Schiferl, "Using temperature, voltage, and/or, speed measurements to improve trending of induction motor rms currents in process control and diagnostics," in Proc. IEEE Industry Applications Soc. Annual Meeting Conf., vol. 1, pp. 312-318, 1994.
+[20] K. R. Cho, J. H. Lang and S. D. Umans, "Detection of broken rotor bars in induction motors using state and parameter estimation," IEEE Trans. Ind. Appl., vol. 28, no. 3, pp. 702 -709, May/Jun. 1992.
+[21] F. Filippetti, G. Franceschini, C. Tassoni and P. Vas, "Broken bar detection in induction machines: Comparison between current spectrum approach and parameter estimation approach," in Proc. IEEE Industry Applications Soc. Annual Meeting Conf., Denver, vol. 1, pp. 95-102, 1994.
+[22] P. Vas, "Parameter Estimation, Condition Monitoring, and Diagnosis of Electrical Machines",Oxford, U.K.: Clarendon, 1993.
+[23] J. Penman, H. G. Sedding, B. A. Lloyd and W. T. Fink, "Detection and location of interturnshor tcircuits in the stator windings of operating motors," IEEE Trans. Energy Convers., vol. 9, no. 4, pp.652- 658, Dec.1994.
+[24] H. Henao, C. Demian and G. A. Capolino, "A frequency-domain detection of stator winding faults ininduction machines using an external flux sensor," IEEE Trans. Ind. Appl., vol. 39, no. 5, pp. 1272-1279, Sep./Oct. 2003.
+[25] J. F. Bangura, R. J. Povinelli, N. A. O. Demerdash and R. H. Brown, "Diagnostics of eccentricitiesand bar/end-ring connector breakages in polyphase induction motors through a combination of timeseries data mining and time-stepping coupled FE- state-space techniques," IEEE Trans. Ind. Appl., vol. 39, no. 4, pp. 1005-1013, Jul./Aug. 2003.
+[26] A. Ganguly, Manoj K Kowar and H. Chandra, "Preventive Maintenance of Rotating Machines UsingSignal Processing" Techniques", International Journal of Soft Computing and Engineering (IJSCE)ISSN: 2231-2307, vol.2, no. 2, May 2012.
+[27] J. Ellison, C. J. Moore and S. J. Yang, "Methods of measurement of acoustic noi se radiated by anelectric machine", Proceeding of IEEE, pp. 174-184, 1971.
+[28] J.Faiz and B.M.Ebrahimi, "Mixed Fault Diagnosis in Three-Phase Squirrel-Cage Induction Motor Using Analysis of Air-Gap Magnetic Field", Progress In Electromagnetics Research (PIER), vol. 64,pp. 239-255, 2006.
+[29] A. M. Trzynadlosky, "Diagnostic of mechanical abnormalities in induction motor using instantaneous electrical power", Conference Proceedings of the 1997 International Electric Machines and Drives, pp. 91-93, 1997.
+[30] A. Ceban, V. Fireteanu, R. Romary, R. Pusca and P. Taras, "Finite Element Diagnosis of Rotor Faults in Induction Motors based on Low Frequency Harmonics of the Near-Magnetic Field", Power Electronics & Drives (SDEMPED), 2011 IEEE International Symposium on Diagnostics for Electric Machines, 10.1109/DEMPED.2011.6063623, 2011, pp. 192-198.
+[31] P. Vas, Artificial-Intelligence-Based Electrical Machines and Drives: Applications of Fuzzy, Neural, Fuzzy-Neural and Genetic Algorithm Based Techniques. New York: Oxford Univ. Press, 1999.
+[32] M. Y. Chow, Methodologies of Using Neural Network and Fuzzy Logic Technologies for Motor Incipient Fault Detection, Singapore: World Scientific, 1997.
+[33] F. Zidani, M. E. H. Benbouzid, D. Diallo and M. S. Nait-Said, "Induction motor stator faults diagnosis by a current Concordia pattern-based fuzzy decision system," IEEE Trans. Energy Convers., vol. 18, no. 4, pp. 469-475, Dec. 2003.
+[34] JafarZarei, JavadPoshtan, "Bearing Fault Detection In Induction Motor Using Pattern RecognitionTechniques", 2nd IEEE International Conference on Power and Energy (PECon 08), December 1-3,2008, Johor Baharu, Malaysia, pp. 749-753.
+[35] A. H. Bonnet, "Cause and analysis of stator and rotor failures in threep hase squirrel-cage induction motors," IEEE Trans. Ind. Appl., vol. 28, no. 4, pp. 921-437, Jul./Aug. 1992.
+[36] A. H. Bonnett and G. C. Soukpup, "Rotor failures in squirrel cage induction motors," IEEE Trans. Ind. Appl., vol. IA-22, no. 6, pp. 1165- 1173,Nov./Dec.1986.
+[37] P. J. Tanver and J. Penman, "Condition Monitoring Electrical Machines", Hertfordshire, U.K.: Research Studies Press, 1987.
+[38] M. Arkan, D.K.PeroviC and Punsworth, "Online stator fault diagnosis in induction motors", IEEE Proc-Electr. Power Appl. vol. 148, no. 6, November 2001.
+[39] Arfat Siddhiqui, G.S.Yadava and Bhim Singh, "A Review of Stator Fault Monitoring Techniques of Induction Motors", IEEE Transactions on Energy Conversion, vol.20, no.1, March 2005.
+[40] S. Hamdani, O. Touhami, R. Ibtiouen and M. Fadel, "Neural Network technique for induction motor rotor faults classification -Dynamic eccentricity and broken bar faults", Power Electronics & Drives (SDEMPED), 2011 IEEE International Symposium on Diagnostics for Electric Machines, 10.1109/DEMPED.2011.6063689, 2011, pp. 626-631.
+[41] A. H. Bonnett 'Root Cause AC Motor Failure Analysis with a Focus on Shaft Failures' IEEE transactions on industry applications, vol. 36, no. 5, September/ october 2000.
+[42] Subhasis Nandi, Thirumarai Chelvan Ilamparithi, Sang Bin Lee and Doosoo Hyun, "Detection of Eccentricity Faults in Induction Machines Based on Nameplate Parameters", IEEE Transactions on Industrial Electronics, vol. 58, no. 5, May 2011.
+[43] S. Nandi, R. M. Bharadwaj, and H. A. Toliyat, "Performance analysis of a three phase induction motor under incipient mixed eccentricity condition," IEEE Trans. Energy Convers., vol. 17, no. 3, pp. 392-399, Sep. 2002.
+[44] X. Li, Q. Wu, and S. Nandi, "Performance analysis of a three-phase induction machine with inclined static eccentricity," IEEE Trans. Ind. Appl., vol. 43, no. 2, pp. 531-541, Mar./Apr. 2007.
+[45] 	Pedro Vicente Jover Rodriguez, Marian Negrei and Antero Arkkio, "A General Scheme for Induction Motor Condition Monitoring", SDEMPED 2005, International Symposium on Diagnostics for Electric Machines, Power Electronics and Drives Vienna, Austria, 7-9 September 2005.
+[46] G.B. Kliman, R.A. Koegl, J. Stein and R.D. Endicott, "Noninvasive Detection of Broken Rotor Bars in Operating Induction Motors", IEEE Trans. Energy Conversion, vol. 3, pp. 873-879, December 1988.
+[47] Joksimovic G.M. and Penman J., " The Detection of Inter-Turn Short Circuits in the Stator Winding of Operating Motors", IEEE Transactions on Industrial Applications, vol. 47, no. 5, pp. 1078 -1084,October 2000.
+[48] Lovi Kaushal Agrawal and SBL Tripathi, "Study of Fault Detecting Techniques in ElectricalMachine", VSRD-IJEECE, vol. 1, no. 8, pp. 478-
+
+489, 2011.
+[49] YE Zhongming and WU Bin, "A Review on Induction Motor Online Fault Diagnosis", The ThirdInternational Power Electronics and Motion Control Conference, 2000, Proceedings. IPEMC 2000,10.1109/IPEMC.2000.883050 , vol.3, pp. 1353-1358, 2000.
+[50] M. M. Stopa, B. J. Cardoso Filho, B. L. O. Lage, "An evaluation of the MCSA method when applied to detect faults in motor driven loads" IECON 2010 - 36th Annual Conference of the IEEE Industrial Electronics Society, pp. 760-765, Glendale, AZ, 7-10 November, 2010.
+[51] R. D. Lorenz, K. W. Van Patten, "High-resolution velocity estimation for All-digital, ac servo drives", IEEE transactions on Industry Applications, vol. 27, No. 4, Jul/Aug, 1991.
+[52] M. M. Stopa, B. J. Cardoso Filho, "Online torque and drawing force estimation in wire drawing process from electric motor variables". IEEE Transactions on Industry Application, vol 44, No. 3, pp. 915-922, IEEE, May/June, 2008.
+[53] Ruiming Fang and Hongzhong Ma, "Application of MCSA and SVM to Induction Machine Rotor Fault Diagnosis", Proceedings of the 6 th World Congress on Intelligent Control and Automation, June 21 - 23, 2006, Dalian, China.
+[54] Chiara Boccaletti, Claudio Bruzzese, Onorato Honorati and Ezio Santini, "Rotor Bars Breakage in Railway Traction Squirrel Cage Induction Motors and Diagnosis by MCSA Technique Part II : Theoretical Arrangements for Fault-Related Current Sidebands", SDEMPED 2005 - International Symposium on Diagnostics for Electric Machines, Power Electronics and Drives, Vienna, Austria, 7-9 September 2005.
+[55] A Alwodai, F Gu and A D Ball, "A Comparison of Different Techniques for Induction Motor Rotor Fault Diagnosis", 25th International Congress on condition Monitoring and Diagnostic Engineering, IOP Publishing, Journal of Physics: Conference Series 364, 012066, 2012.
+[56] Neelam Mehala and Ratna Dahiya, "Motor Current Signature Analysis and its Applications in Induction Motor Fault Diagnosis", International Journal of Systems Applications, Engineering & Development, vol. 2, no. 1, 2007.
+[57] Alan Miletic and Mirko Cettolo, "Frequency Converter Influence on Induction Motor Rotor Faults Detection Using Motor Current Signature Analysis - Experimental Research", Symposium on Diagnostics for Electric Machines, Power Electronics and Drives, Atlanta, GA, USA, 24-26 August 2003.
+[58] D. M. Sonje and R. K. Munje, "Rotor Cage Fault Detection in Induction Motors by Motor Current Signature Analysis", IJCA Proceedings on International Conference in Computational Intelligence (ICCIA2012), no. 2, 2012.
+[59] S.Guedidi, S.E.Zouzou, W.Laala, M.Sahraoui and K.Yahia, "Broken Bar Fault Diagnosis of Induction Motors Using MCSA and Neural Network", 8th IEEE Symposium on Diagnostics for Electrical Machines Power Electronics Drives, no. 1, pp. 632-637, 2011.
+[60] José Ignacio Terra, Marcelo Castelli, Juan Pablo Fossati, Marcos Andrade, Analía Conde and Miguel Martínez-Iturralde, "Faults Detection and Remote Monitoring System for Induction Motors using MCSA Technique".
+[61] SinanAltug, Mo-Yuen Chow and H. Joel Trussell, "Fuzzy Inference Systems Implemented on NeuralArchitectures for Motor Fault Detection and Diagnosis", IEEE Transactions on Industrial Electronics,vol. 46, no. 6, December 1999.
+[62] FatihaZidani, DembaDiallo, Mohamed El HachemiBenbouzid and RachidNaït-Saïd, "A FuzzyBased Approach for the Diagnosis of Fault Modes in a Voltage-Fed PWM Inverter Induction Motor Drive", IEEE Transactions on Industrial Electronics, vol. 55, no. 2, February 2008.
+[63] Mohamed A. Awadallahand Medhat M. Morcos, "Application of AI Tools in Fault DiagnosisofElectrical Machines and Drives-An Overview", IEEE Transactions on Energy Conversion, vol. 18, no. 2, June 2003.
+[64] Paul V. Goode and MO-pen Chow, "Using a Neural/Fuzzy System to Extract Heuristic Knowledge of Incipient Faults in Induction Motors: Part I- Methodology", IEEE Transactions on Industrial Electronics, vol. 42, no. 2, April 1995.
+[65] Mo-yuen Chow, Robert N. Sharpe, and James C. Hung, "On the Application and Design of Artificial Neural Networks for Motor Fault Detection-Part I", IEEE Transactions on Industrial Electronics, vol.40, no. 2, April 1993.
+[66] Arfat Siddique, G.S. Yadava and Bhim Singh, "Status Review On Neural / Fuzzy Logic Techniques for Induction Motor Condition Monitoring".
+[67] Y.Zhongming, W.Bin and A.R.Sadeghian, "Electrical Machine Fault Detection using AdaptiveNeuro-Fuzzy Inference", Proceedings in Joint 9th IFSA World Congress and 20th NAFIPS WorldCongress, pp.390-394, 2001.
+[68] R.M. Tallam, T.G. Habetler and R.G. Harley, "Continual on-line training of neural networks with applications in electric machines fault diagnosis", IEEE 32nd Power Electronics SpecialistsConference, pp.2224-2228, 2001.
+[69] D.T.Phamand P.T.N.Pham, "Artificial Intelligence in Engineering", Intl. J. of Machine Tools &Manufacture, vol.39, pp. 937-949, 1999.
+[70] Vilas N. Ghate and Sanjay V. Dudul, "Optimal MLP neural network classifier for fault detection ofthree phase induction motor", Expert Systems with Applications, vol.37, pp. 3468 -3481, 2010.
+[71] Izzet Y O¨ Nel, K BurakDalci and I?BrahimSenol, "Detection of bearing defects in three-phaseinduction motors using Park's transform and radial basis functionneural networks", Sadhana vol. 31,Part 3, June 2006, pp. 235-244, June 2006.
+[72] Izzet Yilmaz O¨ nel and Mohamed El Hachemi Benbouzid,  "Induction Motor Bearing Failure Detection and Diagnosis: Park and Concordia Transform Approaches Comparative Study", IEEE/ASME Transactions on Mechatronics, vol. 13, no. 2, April 2008.
+[73] Kyusung Kim and Alexander G. Parlos, "Induction Motor Fault Diagnosis Based on Neuro predictors and Wavelet Signal Processing", IEEE/ASME Transactions on Mechatronics, vol. 7, no. 2, June 2002.
+[74] S. M. A. Cruz, H. A. Toliyat and A. J. M. Cardoso "Diagnosis of Stator, Rotor and Airgap Eccentricity Faults in Three-Phase Induction Motors Based on the Multiple Reference Frames Theory", Industry Applications Conference, 2003. 38th IAS Annual Meeting, 2003 , 10.1109/IAS.2003.1257725, Vol.2, pp. 1340-1346.
+[75] Andrian Ceban, Remus Pusca, and Raphaël Romary, "Study of Rotor Faults in Induction Motors Using External Magnetic Field Analysis", IEEE Transactions on Industrial Electronics, vol. 59, no. 5,May 2012.
+
+
+
+

@@ -1,43 +1,119 @@
 import { kpiType, MetricProps, MotorStore, SysteStatusType } from "@/Types/dashboard";
 import { create } from "zustand";
 
-const KPI: kpiType[] = [
-  {
-    name: "Health Score",
-    value: 96,
-    unit: "%",
-    trend: { direction: "down", label: "+2%" },
-    statusVariant: "success"
+type SensorData = {
+  voltage: number;
+  current: number;
+  thd: number;
+  powerFactor: number;
+  vibration: number;
+};
+
+type KPIState = {
+  sensor: SensorData;
+
+  setSensor: (data: Partial<SensorData>) => void;
+
+  kpis: () => any[];
+};
+
+export const useKPIStore = create<KPIState>((set, get) => ({
+  sensor: {
+    voltage: 0,
+    current: 0,
+    thd: 0,
+    powerFactor: 1,
+    vibration: 0
   },
-  {
-    name: "Motor Status",
-    value: "Running",
-    statusVariant: "success"
-  },
-  {
-    name: "Current Fault",
-    value: "None",
-    statusVariant: "info"
-  },
-  {
-    name: "AI Confidence",
-    value: 98.3,
-    unit: "%",
-    statusVariant: "success"
-  },
-  {
-    name: "Remaining Life",
-    value: 278,
-    unit: "Hours",
-    statusVariant: "warning"
-  },
-  {
-    name: "Efficiency",
-    value: 91,
-    unit: "%",
-    statusVariant: "success"
+
+  setSensor: (data) =>
+    set((state) => ({
+      sensor: { ...state.sensor, ...data }
+    })),
+
+  kpis: () => {
+    const { voltage, current, thd, powerFactor, vibration } =
+      get().sensor;
+
+    const clamp = (v: number, min: number, max: number) =>
+      Math.max(min, Math.min(max, v));
+
+    const healthScore = clamp(
+      100 -
+      thd * 0.5 -
+      (vibration / 7.1) * 25 -
+      (1 - powerFactor) * 40,
+      0,
+      100
+    );
+
+    const efficiency = clamp(
+      powerFactor * 100 - thd * 0.7 - vibration * 2,
+      0,
+      100
+    );
+
+    const motorStatus =
+      healthScore > 85 && vibration < 3
+        ? "Running"
+        : healthScore > 60
+          ? "Degraded"
+          : "Fault";
+
+    const fault =
+      thd > 10
+        ? "High Harmonics"
+        : vibration > 7.1
+          ? "Excess Vibration"
+          : powerFactor < 0.7
+            ? "Low Power Factor"
+            : "None";
+
+    const remainingLife = clamp(
+      1000 /
+      (1 + (thd * 0.4 + vibration * 3 + (1 - powerFactor) * 50) / 100),
+      0,
+      5000
+    );
+
+    return [
+      {
+        name: "Health Score",
+        value: Math.round(healthScore),
+        unit: "%",
+        statusVariant:
+          healthScore > 80 ? "success" : healthScore > 50 ? "warning" : "error"
+      },
+      {
+        name: "Motor Status",
+        value: motorStatus,
+        statusVariant:
+          motorStatus === "Running"
+            ? "success"
+            : motorStatus === "Degraded"
+              ? "warning"
+              : "error"
+      },
+      {
+        name: "Current Fault",
+        value: fault,
+        statusVariant: fault === "None" ? "info" : "error"
+      },
+      {
+        name: "Remaining Life",
+        value: Math.round(remainingLife),
+        unit: "Hours",
+        statusVariant: "warning"
+      },
+      {
+        name: "Efficiency",
+        value: Math.round(efficiency),
+        unit: "%",
+        statusVariant: "success"
+      }
+    ];
   }
-];
+}));
 
 export const useMotorStore = create<MotorStore>((set) => ({
   raw: {
@@ -85,4 +161,4 @@ const mockElectricalData = [
   { time: "38s", voltage: 13.0, current: 2.8 },
 ]
 
-export { KPI,SYSTEM_STATUS, mockElectricalData }
+export { SYSTEM_STATUS, mockElectricalData }

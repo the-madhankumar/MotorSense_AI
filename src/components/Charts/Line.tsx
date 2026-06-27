@@ -1,13 +1,22 @@
-"use client"
+"use client";
 
-import { CartesianGrid, LabelList, Line, LineChart, XAxis, YAxis } from "recharts"
+import {
+  CartesianGrid,
+  LabelList,
+  Line,
+  LineChart,
+  XAxis,
+  YAxis,
+} from "recharts";
+
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/components/ui/chart"
-import { ElectricalChartProps } from "@/Types/dashboard"
+} from "@/components/ui/chart";
+import { useElectricalStream } from "@/lib/DashUtils/electricStream";
+
 
 const chartConfig = {
   voltage: {
@@ -16,13 +25,21 @@ const chartConfig = {
   current: {
     label: "Current (A)",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
-export function ElectricalChart({ title = "Electrical Metrics", data }: ElectricalChartProps) {
+export function ElectricalChart({
+  title = "Electrical Metrics",
+  updateInterval = 2000,
+}: {
+  title?: string;
+  updateInterval?: number;
+}) {
+  const data = useElectricalStream(updateInterval);
+
   return (
-    <div className="flex flex-col gap-4 p-6 rounded-2xl w-120 max-w-2xl bg-linear-to-br from-neutral-900 via-neutral-900 to-neutral-950 text-white h-100">
+    <div className="flex flex-col gap-4 p-6 rounded-2xl w-300 max-w-2xl bg-linear-to-br from-neutral-900 via-neutral-900 to-neutral-950 text-white h-120">
       {title && <h3 className="text-lg font-semibold tracking-tight">{title}</h3>}
-      
+
       <ChartContainer config={chartConfig} className="w-full h-87.5">
         <LineChart
           accessibilityLayer
@@ -30,7 +47,7 @@ export function ElectricalChart({ title = "Electrical Metrics", data }: Electric
           margin={{ top: 20, left: 12, right: 12, bottom: 5 }}
         >
           <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="#334155" />
-          
+
           <XAxis
             dataKey="time"
             tickLine={false}
@@ -38,14 +55,9 @@ export function ElectricalChart({ title = "Electrical Metrics", data }: Electric
             tickMargin={8}
             stroke="#94a3b8"
           />
-          
-          <YAxis 
-            tickLine={false} 
-            axisLine={false} 
-            tickMargin={8} 
-            stroke="#94a3b8"
-          />
-          
+
+          <YAxis tickLine={false} axisLine={false} tickMargin={8} stroke="#94a3b8" />
+
           <ChartTooltip
             cursor={false}
             content={<ChartTooltipContent indicator="line" />}
@@ -73,5 +85,5 @@ export function ElectricalChart({ title = "Electrical Metrics", data }: Electric
         </LineChart>
       </ChartContainer>
     </div>
-  )
+  );
 }

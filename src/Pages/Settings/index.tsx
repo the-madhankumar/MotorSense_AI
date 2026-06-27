@@ -1,15 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useAlertCheck } from "@/Context/alert_context";
+import { useAICheck } from "@/Context/rag_context";
+import { useAIStore, useSettingsStore } from "@/Context/ai_context";
+import { Trash2 } from 'lucide-react';
 
 export default function Settings() {
-  const [liveMonitoring, setLiveMonitoring] = useState(true);
-  const [aiPrediction, setAiPrediction] = useState(true);
-  const [alerts, setAlerts] = useState(true);
+  const getAlerts = useAlertCheck((s) => s.getAlerts);
+  const toggleAlert = useAlertCheck((s) => s.toggle);
 
-  const [sensitivity, setSensitivity] = useState("medium");
-  const [ragModel, setRagModel] = useState("gpt-4o-mini");
-  const [apiKey, setApiKey] = useState("");
+  const getAI = useAICheck((s) => s.getAI);
+  const toggleAI = useAICheck((s) => s.toggle);
+
+  const getAIModel = useAIStore((s) => s.getAIModel);
+  const change = useAIStore((s) => s.change);
+
+  const API_KEY = useSettingsStore((s) => s.apiKey);
+  const setApiKey = useSettingsStore((s) => s.setApiKey);
+  const clearApiKey = useSettingsStore((s) => s.clearApiKey);
 
   return (
     <div className="min-h-screen w-full bg-neutral-950 text-white font-mono flex flex-col">
@@ -37,36 +45,17 @@ export default function Settings() {
           {/* Toggle Group */}
           <div className="space-y-4">
 
-            {/* Live Monitoring */}
-            <div className="flex items-center justify-between bg-neutral-900 p-4 rounded-lg border border-neutral-800">
-              <span className="text-xs text-neutral-300">Live Monitoring</span>
-              <button
-                onClick={() => setLiveMonitoring(!liveMonitoring)}
-                className={`relative inline-flex h-5 w-10 items-center rounded-full transition ${
-                  liveMonitoring ? "bg-sky-500" : "bg-neutral-700"
-                }`}
-              >
-                <span
-                  className={`h-4 w-4 bg-white rounded-full transform transition ${
-                    liveMonitoring ? "translate-x-5" : "translate-x-1"
-                  }`}
-                />
-              </button>
-            </div>
-
             {/* AI Prediction */}
             <div className="flex items-center justify-between bg-neutral-900 p-4 rounded-lg border border-neutral-800">
               <span className="text-xs text-neutral-300">AI Prediction</span>
               <button
-                onClick={() => setAiPrediction(!aiPrediction)}
-                className={`relative inline-flex h-5 w-10 items-center rounded-full transition ${
-                  aiPrediction ? "bg-sky-500" : "bg-neutral-700"
-                }`}
+                onClick={toggleAI}
+                className={`relative inline-flex h-5 w-10 items-center rounded-full transition ${getAI ? "bg-sky-500" : "bg-neutral-700"
+                  }`}
               >
                 <span
-                  className={`h-4 w-4 bg-white rounded-full transform transition ${
-                    aiPrediction ? "translate-x-5" : "translate-x-1"
-                  }`}
+                  className={`h-4 w-4 bg-white rounded-full transform transition ${getAI ? "translate-x-5" : "translate-x-1"
+                    }`}
                 />
               </button>
             </div>
@@ -75,38 +64,15 @@ export default function Settings() {
             <div className="flex items-center justify-between bg-neutral-900 p-4 rounded-lg border border-neutral-800">
               <span className="text-xs text-neutral-300">Alerts</span>
               <button
-                onClick={() => setAlerts(!alerts)}
-                className={`relative inline-flex h-5 w-10 items-center rounded-full transition ${
-                  alerts ? "bg-sky-500" : "bg-neutral-700"
-                }`}
+                onClick={toggleAlert}
+                className={`relative inline-flex h-5 w-10 items-center rounded-full transition ${getAlerts ? "bg-sky-500" : "bg-neutral-700"
+                  }`}
               >
                 <span
-                  className={`h-4 w-4 bg-white rounded-full transform transition ${
-                    alerts ? "translate-x-5" : "translate-x-1"
-                  }`}
+                  className={`h-4 w-4 bg-white rounded-full transform transition ${getAlerts ? "translate-x-5" : "translate-x-1"
+                    }`}
                 />
               </button>
-            </div>
-          </div>
-
-          {/* Sensitivity */}
-          <div className="bg-neutral-900 p-4 rounded-lg border border-neutral-800 space-y-3">
-            <p className="text-xs text-neutral-400">Sensitivity Level</p>
-
-            <div className="flex gap-2">
-              {["low", "medium", "high"].map((level) => (
-                <button
-                  key={level}
-                  onClick={() => setSensitivity(level)}
-                  className={`px-3 py-1 text-[10px] rounded-md transition ${
-                    sensitivity === level
-                      ? "bg-sky-500 text-white"
-                      : "bg-neutral-800 text-neutral-400"
-                  }`}
-                >
-                  {level.toUpperCase()}
-                </button>
-              ))}
             </div>
           </div>
         </div>
@@ -119,31 +85,97 @@ export default function Settings() {
           </h2>
 
           {/* RAG Model */}
-          <div className="bg-neutral-900 p-4 rounded-lg border border-neutral-800 space-y-2">
-            <p className="text-xs text-neutral-300">RAG Model</p>
+          <div className="rounded-2xl border border-neutral-700 bg-neutral-900 p-5 shadow-lg">
+            <label
+              htmlFor="rag-model"
+              className="mb-3 block text-sm font-semibold text-white"
+            >
+              🤖 RAG AI Model
+            </label>
+
+            <p className="mb-4 text-xs text-neutral-400">
+              Select a completely free OpenRouter model.
+            </p>
 
             <select
-              value={ragModel}
-              onChange={(e) => setRagModel(e.target.value)}
-              className="w-full bg-neutral-800 border border-neutral-700 text-xs text-neutral-300 p-2 rounded-md"
+              id="rag-model"
+              value={getAIModel}
+              onChange={(e) => change(e.target.value)}
+              className="
+      w-full
+      rounded-xl
+      border border-neutral-600
+      bg-neutral-800
+      px-4
+      py-3
+      text-sm
+      font-medium
+      text-white
+      outline-none
+      transition-all
+      duration-200
+      hover:border-blue-500
+      focus:border-blue-500
+      focus:ring-2
+      focus:ring-blue-500/30
+    "
             >
-              <option value="gpt-4o-mini">GPT-4o Mini (Fast)</option>
-              <option value="gpt-4o">GPT-4o (Balanced)</option>
-              <option value="llama-3">LLaMA 3 (Local)</option>
-            </select>
-          </div>
+              <optgroup label="🆓 FREE MODELS">
+                <option value="openrouter/free">
+                  ⚡ Auto Free (Recommended)
+                </option>
 
+                <option value="google/gemma-4-27b-it:free">
+                  💎 Gemma 4 27B
+                </option>
+
+                <option value="meta-llama/llama-3.2-3b-instruct:free">
+                  🦙 Llama 3.2 3B
+                </option>
+
+                <option value="qwen/qwen3-coder:free">
+                  💻 Qwen 3 Coder
+                </option>
+
+                <option value="nvidia/nemotron-3-ultra:free">
+                  🚀 Nemotron Ultra
+                </option>
+              </optgroup>
+            </select>
+
+            <div className="mt-3 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-300">
+              ✅ All models above are available on OpenRouter's free tier.
+            </div>
+          </div>
           {/* API Key */}
-          <div className="bg-neutral-900 p-4 rounded-lg border border-neutral-800 space-y-2">
-            <p className="text-xs text-neutral-300">API Key</p>
+          <div className="bg-neutral-900 p-4 rounded-lg border border-neutral-800 space-y-3">
+            <p className="text-xs font-medium text-neutral-300">API Key</p>
 
             <input
               type="password"
-              value={apiKey}
+              value={API_KEY}
               onChange={(e) => setApiKey(e.target.value)}
-              placeholder="sk-********************************"
-              className="w-full bg-neutral-800 border border-neutral-700 text-xs text-neutral-300 p-2 rounded-md"
+              placeholder="sk-or-v1-********************************"
+              className="w-full rounded-md border border-neutral-700 bg-neutral-800 p-2 text-xs text-neutral-200 placeholder:text-neutral-500 focus:border-red-500 focus:outline-none"
             />
+
+            <button
+              type="button"
+              onClick={clearApiKey}
+              disabled={!API_KEY}
+              className="
+    flex w-full items-center justify-center gap-2
+    rounded-md border border-red-600
+    bg-red-600/10 px-3 py-2
+    text-xs font-medium text-red-400
+    transition-all duration-200
+    hover:bg-red-600/20 hover:border-red-500
+    disabled:cursor-not-allowed disabled:opacity-50
+  "
+            >
+              <Trash2 className="h-4 w-4" />
+              <span>Reset API Key</span>
+            </button>
           </div>
 
           {/* System Status */}

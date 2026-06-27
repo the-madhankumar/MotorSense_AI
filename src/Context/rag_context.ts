@@ -1,4 +1,18 @@
 import { RAGPaperType } from "@/Types/rag";
+import { create } from "zustand";
+
+type AICheckStore = {
+  getAI: boolean;
+  toggle: () => void;
+};
+
+export const useAICheck = create<AICheckStore>((set) => ({
+  getAI: true,
+  toggle: () =>
+    set((state) => ({
+      getAI: !state.getAI,
+    })),
+}));
 
 const RAG_PAPERS: RAGPaperType[] = [
   {

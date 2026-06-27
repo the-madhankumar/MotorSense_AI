@@ -1,11 +1,12 @@
 "use client";
 
 import useCurrentMenu, { MENU } from "@/Context/sidebar_context";
-import Alerts from "@/Pages/Alert";
-import Dashboard from "@/Pages/Dashboard";
-import LiveMonitoring from "@/Pages/Live";
-import Reports from "@/Pages/Reports";
-import Settings from "@/Pages/Settings";
+import AIApp from "@/pages/AI";
+import Alerts from "@/pages/Alert";
+import Dashboard from "@/pages/Dashboard";
+import LiveMonitoring from "@/pages/Live";
+import Reports from "@/pages/Reports";
+import Settings from "@/pages/Settings";
 
 function getCurrentView(currentMenu: string) {
   switch (currentMenu) {
@@ -19,6 +20,8 @@ function getCurrentView(currentMenu: string) {
       return <Alerts/>
     case MENU.LIVE_MONITORING:
       return <LiveMonitoring />
+    case MENU.AI_PREDICTION:
+      return <AIApp />
     default:
       return <div>Select a menu item</div>;
   }

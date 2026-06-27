@@ -1,7 +1,3 @@
-Below is a **high-end, thesis-grade README.md** you can directly use. It’s structured like an engineering system report (architecture + ML + RAG + ONNX + deployment), not a casual GitHub README.
-
----
-
 # ⚙️ MotorMind AI
 
 > **Real-Time Industrial Motor Fault Diagnosis System using ONNX Runtime + RAG-Augmented Intelligence**
